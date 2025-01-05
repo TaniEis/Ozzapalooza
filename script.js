@@ -1,13 +1,14 @@
 // Initialize the Vimeo Player
-const iframe = document.getElementById('vimeo-video');
-const player = new Vimeo.Player(iframe);
+let iframe = document.createElement('iframe');
+const content = document.getElementById('videoContainer');
 
-// Buttons
-const volUpBtn = document.getElementById('vol-up');
-const volDownBtn = document.getElementById('vol-down');
-const playPauseBtn = document.getElementById('play-pause');
-const content = document.getElementById('content');
-const container = document.getElementById('container');
+iframe.setAttribute('src', 'https://player.vimeo.com/video/1043780051?autoplay=1&muted=1&title=0&byline=0&portrait=0&background=1');
+  iframe.setAttribute('frameborder', '0');
+  iframe.setAttribute('allow', 'autoplay; fullscreen;');
+  iframe.setAttribute('id', 'vimeo-video');
+  iframe.setAttribute('class', 'bgVid');
+
+  document.querySelector('body').appendChild(iframe);
 
 function moveIframeOnSmallScreens() {
   if (window.innerWidth < 700) {
@@ -18,29 +19,33 @@ function moveIframeOnSmallScreens() {
       iframe.style.position = 'static';
       iframe.style.width = '100%';
       iframe.style.height = 'auto';
-      console.log('Iframe moved to #content');
-      player.play()
-    }
-  } else {
-    if (iframe.parentElement !== container) {
-      container.appendChild(iframe);
-
-      // Reset styles to prevent issues
-      iframe.style.position = 'static';
-      iframe.style.width = '100%';
-      iframe.style.height = 'auto';
-      console.log('Iframe moved back to #container');
     }
   }
 }
 
 moveIframeOnSmallScreens();
 
-    // Recheck on window resize
-    window.addEventListener('resize', moveIframeOnSmallScreens);
+const player = new Vimeo.Player(iframe);
+const soundOffButton = document.querySelector(".soundOff");
+const soundOnButton = document.querySelector(".soundOn");
+let currentVolume = 0.8; 
 
-// Volume Control Variables
-let currentVolume = 0.5; // Initial volume (50%)
+soundOffButton.addEventListener("click", function () {
+  player.play();
+  player.setVolume(0);
+});
+
+// Handle Sound On
+soundOnButton.addEventListener("click", function () {
+  player.play();
+  player.setVolume(currentVolume);
+});
+
+// Buttons
+const volUpBtn = document.getElementById('vol-up');
+const volDownBtn = document.getElementById('vol-down');
+const playPauseBtn = document.getElementById('play-pause');
+
 player.setVolume(currentVolume);
 
 // Volume Up Button

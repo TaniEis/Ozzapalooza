@@ -14,11 +14,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <div id="container">
-<iframe src="https://player.vimeo.com/video/1043780051?autoplay=1&muted=0&title=0&byline=0&portrait=0&background=1" 
-    allow="autoplay; fullscreen" class="bgVid" id="vimeo-video" allowfullscreen></iframe>
-</div>
+    <input class="dialogCB" id="dialogCB" type="checkbox" checked>
+    <dialog>
+        <h2>⚠️</h2>
+        <h2>Can we rock you with our music?</h2>
+        <div class="buttons">
+          <label for="dialogCB" role="button" class="btn soundOff">
+            <i class="fa-solid fa-volume-xmark"></i> Sound Off</label>
+          <label for="dialogCB" role="button" class="btn soundOn">
+            <i class="fa-solid fa-volume-high"></i>Rock On!</label>
+        </div>
+      </dialog>
+      
+<!-- <iframe src="https://player.vimeo.com/video/1043780051?autoplay=1&muted=0&title=0&byline=0&portrait=0&background=1" 
+    allow="autoplay; fullscreen" class="bgVid" id="vimeo-video"></iframe> -->
 
   <div class="wrap">
   <div class="nav">
@@ -32,10 +41,11 @@
     </div>
 </div>
 
-    <div id="content">
+    <div class="content">
    
     <div class="logo">
         <img src="assets/logo.webp">
+        <div id="videoContainer"></div>
     </div>
   
   <div class="sectionONE">
